@@ -1,6 +1,7 @@
 $(document).ready(function () {
     if (Boolean(document.cookie.split(';')[0].split('=')[1]) == true) {
       $(".cookie-popup").addClass("d-none");
+      console.log('test');
     }
     let date = new Date();
     date.setHours(date.getHours() + 24);
