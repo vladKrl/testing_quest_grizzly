@@ -11,15 +11,22 @@ $html_objects = json_decode($html);
 
 $phone = $_GET["phone"];
 
+$is_phone_found = false;
+
 foreach ($html_objects as $value) {
     $mask_first_number = str_replace(["(","#",")","-"], "", $value->mask);
     $phone_cutted = "+" . str_replace(["(","#",")","-", " ", "+"], "" , $phone);
-    // echo $mask_first_number . " $value->name_en " . '<br>';
     if (mb_strstr($phone_cutted, $mask_first_number)){
         echo "$phone - $value->name_en. <br>";
+        $is_phone_found = true;
         break;
     }
 }
+
+if (!$is_phone_found){
+    echo "Country is undefined.<br>";
+}
+
 ?>
 
 <!DOCTYPE html>
